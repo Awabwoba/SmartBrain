@@ -15,7 +15,7 @@ const app = new Clarifai.App({
   apiKey: "b8fea21c70854ff3bd8b188d34376cb9"
 });
 
-const parcticlesOpions = {
+const particlesOptions = {
   particles: {
     number: {
       value: 80,
@@ -96,7 +96,7 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
-        <Particles className="particles" params={parcticlesOpions} />
+        <Particles className="particles" params={particlesOptions} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
@@ -117,7 +117,7 @@ class App extends Component {
           <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
-    );https://github.com/SSNikolaevich/DejaVuSansCode
+    );
   }
 }
 
