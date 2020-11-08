@@ -1,54 +1,53 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 class Register extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      registrationName: '',
-      registrationEmail: '',
-      registrationPassword: ''
+      registrationName: "",
+      registrationEmail: "",
+      registrationPassword: ""
     };
 
     this.onNameChange = this.onNameChange.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPassWordChange = this.onPassWordChange.bind(this);
-    this.onSubmitRegister= this.onSubmitRegister.bind(this);
+    this.onSubmitRegister = this.onSubmitRegister.bind(this);
   }
 
   onNameChange(event) {
-    this.setState({registrationName: event.target.value});
+    this.setState({ registrationName: event.target.value });
   }
 
   onEmailChange(event) {
-    this.setState({registrationEmail: event.target.value});
+    this.setState({ registrationEmail: event.target.value });
   }
 
   onPassWordChange(event) {
-    this.setState({registrationPassword: event.target.value});
+    this.setState({ registrationPassword: event.target.value });
   }
 
   onSubmitRegister() {
-    console.log('working');
     //  get the endpoint for registration
     const url = `http://localhost:8000/register`;
 
     fetch(url, {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: this.state.registrationName,
         password: this.state.registrationPassword,
         email: this.state.registrationEmail
       })
     })
-      .then(response=>response.json())
-      .then(user=>{
-        if(user){
+      .then(response => response.json())
+      .then(user => {
+        if (user) {
           this.props.loadUser(user);
-          this.props.onRouteChange('home')
+          this.props.onRouteChange("home");
         }
-      })
+      });
   }
 
   render() {
